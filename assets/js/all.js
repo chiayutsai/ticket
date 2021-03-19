@@ -152,6 +152,12 @@ ticketName.addEventListener('keyup', function () {
 ticketImgUrl.addEventListener('change', function () {
   quickValidation(ticketImgUrl);
 });
+ticketPrice.addEventListener('change', function () {
+  quickValidation(ticketPrice);
+});
+ticketNumber.addEventListener('change', function () {
+  quickValidation(ticketNumber);
+});
 ticketScore.addEventListener('change', function () {
   rangeValidation(ticketScore);
 });
