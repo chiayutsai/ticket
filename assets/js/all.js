@@ -111,24 +111,10 @@ function quickValidation(field) {
 
 ;
 
-function numberValidation(field) {
-  var num = parseFloat(field.value);
-
-  if (isNaN(num)) {
-    field.classList.add("error");
-    field.nextSibling.nextSibling.classList.add("show-feedback");
-    state = "failed";
-  } else {
-    field.classList.remove("error");
-    field.nextSibling.nextSibling.classList.remove("show-feedback");
-    state = "success";
-  }
-}
-
 function rangeValidation(field) {
-  var num = parseFloat(field.value);
+  var num = field.value;
 
-  if (isNaN(num) || num < 1 || num > 10) {
+  if (num < 1 || num > 10) {
     field.classList.add("error");
     field.nextSibling.nextSibling.classList.add("show-feedback");
     state = "failed";
@@ -148,10 +134,6 @@ function formValidation() {
       item.nextSibling.nextSibling.classList.add("show-feedback");
     } else {
       if (index == 3) {
-        numberValidation(ticketPrice);
-      } else if (index == 4) {
-        numberValidation(ticketNumber);
-      } else if (index == 5) {
         rangeValidation(ticketScore);
       }
     }
@@ -169,12 +151,6 @@ ticketName.addEventListener('keyup', function () {
 });
 ticketImgUrl.addEventListener('change', function () {
   quickValidation(ticketImgUrl);
-});
-ticketPrice.addEventListener('change', function () {
-  numberValidation(ticketPrice);
-});
-ticketNumber.addEventListener('change', function () {
-  numberValidation(ticketNumber);
 });
 ticketScore.addEventListener('change', function () {
   rangeValidation(ticketScore);
