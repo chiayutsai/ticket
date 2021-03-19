@@ -38,6 +38,7 @@ var ticketPrice = document.querySelector('#price');
 var ticketNumber = document.querySelector('#number');
 var ticketScore = document.querySelector('#score');
 var ticketDescription = document.querySelector('#description');
+var state = 'success';
 var submit = document.querySelector('.submit');
 
 function formInit() {
@@ -116,9 +117,11 @@ function numberValidation(field) {
   if (isNaN(num)) {
     field.classList.add("error");
     field.nextSibling.nextSibling.classList.add("show-feedback");
+    state = "failed";
   } else {
     field.classList.remove("error");
     field.nextSibling.nextSibling.classList.remove("show-feedback");
+    state = "success";
   }
 }
 
@@ -128,14 +131,15 @@ function rangeValidation(field) {
   if (isNaN(num) || num < 1 || num > 10) {
     field.classList.add("error");
     field.nextSibling.nextSibling.classList.add("show-feedback");
+    state = "failed";
   } else {
     field.classList.remove("error");
     field.nextSibling.nextSibling.classList.remove("show-feedback");
+    state = "success";
   }
 }
 
 function formValidation() {
-  var state = 'success';
   var forms = document.querySelectorAll('.is-required');
   forms.forEach(function (item, index) {
     if (item.value == '') {
@@ -187,7 +191,7 @@ submit.addEventListener('click', function (e) {
     showData();
     formInit();
   }
-}); // 下拉選單功能
+}); // 下拉選單功能 jQuery
 
 $(document).ready(function () {
   $('[data-toggle="dropdown"]').click(function (e) {
