@@ -40,7 +40,9 @@ let ticketPrice = document.querySelector('#price');
 let ticketNumber = document.querySelector('#number');
 let ticketScore = document.querySelector('#score');
 let ticketDescription = document.querySelector('#description');
+let state = 'success';
 let submit = document.querySelector('.submit');
+
 
 
 function formInit() {
@@ -140,10 +142,11 @@ function numberValidation(field) {
   if (isNaN(num)) {
     field.classList.add("error");
     field.nextSibling.nextSibling.classList.add("show-feedback");
-
+    state = "failed";
   } else {
     field.classList.remove("error");
-    field.nextSibling.nextSibling.classList.remove("show-feedback")
+    field.nextSibling.nextSibling.classList.remove("show-feedback");
+    state = "success";
   }
 }
 function rangeValidation(field) {
@@ -152,15 +155,16 @@ function rangeValidation(field) {
   if (isNaN(num) || num < 1 || num > 10) {
     field.classList.add("error");
     field.nextSibling.nextSibling.classList.add("show-feedback");
-
+    state = "failed";
   } else {
     field.classList.remove("error");
-    field.nextSibling.nextSibling.classList.remove("show-feedback")
+    field.nextSibling.nextSibling.classList.remove("show-feedback");
+    state = "success";
   }
 }
 
 function formValidation() {
-  let state = 'success';
+
   let forms = document.querySelectorAll('.is-required');
   forms.forEach(function (item, index) {
 
@@ -216,7 +220,7 @@ submit.addEventListener('click', function (e) {
   }
 });
 
-// 下拉選單功能
+// 下拉選單功能 jQuery
 $(document).ready(function () {
   $('[data-toggle="dropdown"]').click(function (e) {
     e.preventDefault();
@@ -242,4 +246,7 @@ $(document).ready(function () {
     updateData(select);
   });
 });
+
+
+
 showData();
